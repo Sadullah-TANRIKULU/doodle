@@ -19,7 +19,7 @@ const addProduct = async () => {
     let productname = inputProductName.textContent;
     let quantity = inputQuantity.textContent;
 
-    const addedProduct = await fetch("http://localhost:3000/product", {
+    const addedProduct = await fetch("https://ahbaphataydepo-service.onrender.com/product", {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -37,7 +37,7 @@ const addProduct = async () => {
 }
 
 const handleDelete = async (id) => {
-    const deletedProduct = await fetch(`http://localhost:3000/products/${id}`, {
+    const deletedProduct = await fetch(`https://ahbaphataydepo-service.onrender.com/products/${id}`, {
         method: 'DELETE',
         headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }
     })
@@ -52,7 +52,7 @@ const handleDelete = async (id) => {
 let idcopy;
 const readyToUpdate = async (id) => {
     idcopy = id;
-    const singleProduct = await fetch(`http://localhost:3000/products/${id}`, {
+    const singleProduct = await fetch(`https://ahbaphataydepo-service.onrender.com/products/${id}`, {
         method: 'GET',
         headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }
     })
@@ -78,7 +78,7 @@ const updateProduct = async (e) => {
     let productNewname = document.querySelector('#input-product-name').value;
     let newQuantity = document.querySelector('#input-quantity').value;
 
-    const updatedProduct = await fetch(`http://localhost:3000/products/${idcopy}`, {
+    const updatedProduct = await fetch(`https://ahbaphataydepo-service.onrender.com/products/${idcopy}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
         body: JSON.stringify({
@@ -103,7 +103,7 @@ document.getElementById('btn-update-product').addEventListener("click", updatePr
 
 const getProducts = async () => {
 
-    const allProducts = await fetch('http://localhost:3000/products', {
+    const allProducts = await fetch('https://ahbaphataydepo-service.onrender.com/products', {
         method: 'GET',
         headers: { 'Content-Type': 'application/json' }
     })
