@@ -1,0 +1,26 @@
+{
+  "name": "doodle",
+  "version": "1.0.0",
+  "description": "frontend-backend-database",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "keywords": [
+    "frontend",
+    "backend",
+    "database",
+    "postgresql",
+    "javascript"
+  ],
+  "author": "Sadullah-TANRIKULU",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "nodemon": "^2.0.22",
+    "pg": "^8.10.0"
+  }
+}

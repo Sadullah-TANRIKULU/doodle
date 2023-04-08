@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="description" content="Ahbap Hatay geçici depo kontrol programı">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="keywords" content="ahbap, sevgi, yardım, dost, afetzede">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <link rel="shortcut icon" href="../backend/public/assets/favico.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap" rel="stylesheet">
+    <title>Hatay Depo Product Quantity Tracker</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Ubuntu Mono', monospace;
+            font-size: 1.2rem;
+        }
+
+        .product {
+            padding: .5rem;
+            display: flex;
+            align-items: center;
+            gap: .5rem;
+
+            min-height: 3.5rem;
+        }
+
+        .productname {
+            flex: 0;
+            min-width: 25%;
+
+        }
+
+        .quantity {
+            flex: 1;
+            text-indent: 3rem;
+        }
+
+        .update {
+            flex: 1;
+            width: 4.5rem;
+            min-height: 2rem;
+            cursor: pointer;
+            border-radius: 7px;
+        }
+
+        .delete {
+            flex: 1;
+            width: 4.5rem;
+            min-height: 2rem;
+            cursor: pointer;
+            border-radius: 7px;
+        }
+
+        .formee {
+            position: fixed;
+            background-color: rgb(9, 78, 9);
+            width: 100vw;
+            /* height: 26vh; */
+            min-height: 11rem;
+            top: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            z-index: 1;
+        }
+
+        .formee h1 {
+            color: #b8b4b4;
+            text-align: center;
+        }
+
+        #input-product-name {
+            display: block;
+            width: 80%;
+            margin: 3px 0 3px 0;
+            height: 1.9rem;
+            border-radius: 5px;
+            text-indent: 1rem;
+        }
+
+        #input-quantity {
+            display: block;
+            width: 80%;
+            margin: 3px 0 3px 0;
+            height: 1.9rem;
+            border-radius: 5px;
+            text-indent: 1rem;
+        }
+
+        .form-btns {
+            margin-top: 1rem;
+            display: block;
+            height: 1.9rem;
+            width: 70%;
+            border-radius: 13px;
+            cursor: pointer;
+        }
+
+        #app {
+            width: 100vw;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="formee">
+        <h1>Ahbap Hatay Depo Product Quantity Tracker</h1>
+        <input type="text" name="productname" id="input-product-name" placeholder="product name">
+        <input type="text" name="quantity" id="input-quantity" placeholder="quantity">
+        <button id="btn-add-product" class="form-btns" onclick="addProduct()">Add Product</button>
+        <button id="btn-update-product" class="form-btns">Update Product</button>
+    </div>
+    <br><br><br><br><br><br><br><br><br><br><br><br>
+    <section id="app"></section>
+    <script src="./script.js"></script>
+</body>
+
+</html>

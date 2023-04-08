@@ -1,0 +1,7 @@
+seperated frontend and backend
+
+expressjs no more serves static html,js files
+
+fetch from frontend and serve from backend
+
+database was deployed
