@@ -3,6 +3,8 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const pg = require('pg');
 const cors = require("cors");
+const path = require('path');
+const logger = require('./utils/logger');
 
 // Configure database connection
 const pool = new pg.Pool({
@@ -40,9 +42,6 @@ app.use((req, res, next) => {
   return next();
 });
 
-// Serve static files from public folder
-// app.use('/', express.static('public'));
-
 // Handle GET request to retrieve current products
 app.get("/products", (req, res) => {
   try {
@@ -54,6 +53,7 @@ app.get("/products", (req, res) => {
         products: result.rows,
 
       });
+      
     });
   } catch (error) {
     res.status(500).json({
@@ -95,7 +95,9 @@ app.post('/product', async (req, res) => {
         err: null,
         product: result.rows[0]
       });
+      logger.info(`created, ${productname} ${quantity}`)
     });
+    
   } catch (error) {
     res.status(500).json({
       err: error.message,
@@ -116,7 +118,9 @@ app.put('/products/:id', async (req, res) => {
         err: null,
         product: result.rows[0]
       });
+      logger.info(`updated, ${productname} ${quantity}`)
     });
+    
   } catch (error) {
     res.status(500).json({
       err: error.message,
@@ -130,19 +134,26 @@ app.delete('/products/:id', async (req, res) => {
   const id = req.params.id;
   try {
     pool.query('DELETE FROM products WHERE id = $1', [id], (err, result) => {
-
+      
       if (err) throw err;
       res.status(200).json({
         err: null,
         product: result.rows[0]
       });
+      logger.info('deleted');
     });
+    
   } catch (error) {
     res.status(500).json({
       err: error.message,
       product: null
     });
   }
+});
+
+app.get('/logs', async (req, res) => {
+  const logFilePath = path.join(__dirname, 'server-info.log');
+  res.download(logFilePath);
 });
 
 // Start the server
