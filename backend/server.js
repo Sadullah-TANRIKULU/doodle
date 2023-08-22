@@ -8,13 +8,13 @@ const logger = require('./utils/logger');
 
 // Configure database connection
 const pool = new pg.Pool({
-  user: 'me',
-  host: 'dpg-cgb0uu5269v4icojn4sg-a.frankfurt-postgres.render.com',
-  database: 'myfirstdatabase',
-  password: 'PUkUpEya1CKkHDAC010LPP0G5zYavFID',
-  port: 5432,
-  ssl: true,
-  // connectionString:"postgres://me:PUkUpEya1CKkHDAC010LPP0G5zYavFID@dpg-cgb0uu5269v4icojn4sg-a.frankfurt-postgres.render.com/myfirstdatabase"
+  // user: 'me',
+  // host: 'dpg-cjic2evjbvhs738et7fg-a.frankfurt-postgres.render.com',
+  // database: 'myfirstdatabase_oni4',
+  // password: 'PUkUpEya1CKkHDAC010LPP0G5zYavFID',
+  // port: 5432,
+  // ssl: true,
+  connectionString:"postgres://me:gxI6IikiOXJOCSZkhKpmGaTQgzzVoQ5X@dpg-cjic2evjbvhs738et7fg-a.oregon-postgres.render.com/myfirstdatabase_oni4"
 });
 
 pool.on('error', (err, client) => {
