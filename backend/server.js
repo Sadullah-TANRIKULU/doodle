@@ -1,4 +1,5 @@
 // Load required modules
+require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
 const pg = require('pg');
@@ -8,13 +9,10 @@ const logger = require('./utils/logger');
 
 // Configure database connection
 const pool = new pg.Pool({
-  // user: 'me',
-  // host: 'dpg-cjic2evjbvhs738et7fg-a.frankfurt-postgres.render.com',
-  // database: 'myfirstdatabase_oni4',
-  // password: 'PUkUpEya1CKkHDAC010LPP0G5zYavFID',
-  // port: 5432,
-  // ssl: true,
-  connectionString:"postgres://me:gxI6IikiOXJOCSZkhKpmGaTQgzzVoQ5X@dpg-cjic2evjbvhs738et7fg-a.oregon-postgres.render.com/myfirstdatabase_oni4"
+  connectionString: process.env.DATABASE_URL,
+  ssl: process.env.DATABASE_URL && process.env.DATABASE_URL.includes("render.com")
+    ? { rejectUnauthorized: false }
+    : undefined
 });
 
 pool.on('error', (err, client) => {
@@ -41,6 +39,9 @@ app.use((req, res, next) => {
   res.header('Access-Control-Allow-Credentials', true);
   return next();
 });
+
+// Serve static frontend files
+app.use(express.static(path.join(__dirname, '../frontend')));
 
 // Handle GET request to retrieve current products
 app.get("/products", (req, res) => {
